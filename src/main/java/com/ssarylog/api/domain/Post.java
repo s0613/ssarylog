@@ -1,0 +1,36 @@
+package com.ssarylog.api.domain;
+
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PUBLIC) // <- 알아보기
+public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String title;
+
+    @Lob
+    private String content;
+
+    @Builder
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public PostEditor.PostEditorBuilder toEditor(){ // 빌더 클래스 자체를 넘겨주기 때문에 build();를 넣지 않는다.
+            return PostEditor.builder()
+                .title(title)
+                .content(content);
+    } // builder class안에 들어갔다가 값이 넘어옴 변수들은 기본적으로 null이 들어감
+
+    public void edit(PostEditor postEditor) {
+        title = postEditor.getTitle();
+        content = postEditor.getContent();
+    }
+}
