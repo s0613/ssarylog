@@ -22,6 +22,9 @@
 MANIFEST.MF
 _site/
 activemq-data
+
+# ssarylog
+nodeenv-21
 bin
 build
 !/**/src/**/bin
