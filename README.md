@@ -5,7 +5,7 @@
 # 목차
 - [개발 환경](#개발-환경)
 - [사용 기술](#사용-기술)
-- 
+
 ## 개발 환경
 - Intellij
 - Github
@@ -29,6 +29,7 @@
 
 ### 프론트엔드
 - Javascript
+- Typescript
 - Html/Css
 - Bootstrap5
 - Vue.js
