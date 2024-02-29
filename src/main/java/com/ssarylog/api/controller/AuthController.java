@@ -24,7 +24,7 @@ import java.time.Duration;
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
-    
+
 
     @PostMapping("/auth/login")
     public SessionResponse login(@RequestBody Login login){
