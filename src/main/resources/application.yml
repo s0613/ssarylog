@@ -10,9 +10,15 @@ datasource:
   password:
   driver-class-name: org.h2.driver
 
+  jpa:
+    defer-datasource-initialization: true
+
 data:
   web:
     pageable:
       max-page-size: 2000
       default-page-size: 20
       one-indexed-parameters: true
+
+ssary:
+  jwtKey:

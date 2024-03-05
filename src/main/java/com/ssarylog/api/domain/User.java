@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "Member")
 public class User {
 
     @Id
@@ -27,7 +28,7 @@ public class User {
 
     private LocalDateTime createdAt;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany
     private List<Session> sessions = new ArrayList<>();
 
     @Builder

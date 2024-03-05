@@ -4,6 +4,8 @@ import com.ssarylog.api.config.data.UserSession;
 import com.ssarylog.api.domain.Session;
 import com.ssarylog.api.exception.Unauthorized;
 import com.ssarylog.api.repository.SessionRepository;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.http.Cookie;
@@ -20,7 +22,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @RequiredArgsConstructor
 public class AuthResolver implements HandlerMethodArgumentResolver {
     private final SessionRepository sessionRepository;
-
+    private final AppConfig appConfig;
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.getParameterType().equals(UserSession.class);
@@ -33,15 +35,15 @@ public class AuthResolver implements HandlerMethodArgumentResolver {
             throw new Unauthorized();
         }
 
-        try{
-            Jwts.parser()
-                    .setSigningKey(key)
+        try {
+            Jws<Claims> claims = Jwts.parser()
+                    .setSigningKey(appConfig.getJwtKey())
                     .build()
-                    .parseClaimsJws(compactJws);
-        }
-        catch (JwtException e){
+                    .parseClaimsJws(jws);
+            String userId = claims.getBody().getSubject();
+            return new UserSession(Long.parseLong(userId));
+        } catch (JwtException e) {
             throw new Unauthorized();
         }
-        return new UserSession(session.getUser().getId());
     }
 }
