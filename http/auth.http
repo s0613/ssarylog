@@ -1,15 +1,27 @@
-### 로그인
-
-POST http://localhost:8080/auth/login
+### 회원가입
+POST http://localhost:8080/auth/signup
 Content-Type: application/json
 
 {
+  "name": "song",
   "email": "ssary00@naver.com",
-  "password": "1234"
+  "password": "1234a"
 }
+
+
+
+### 로그인
+POST http://localhost:8080/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=ssary&password=1234&remember=1
+
 
 ### 인증 페이지 요청
 
 GET http://localhost:8080/foo
 Content-Type: application/json
 Cookie:
+
+### 메인 페이지
+GET http://localhost:8080

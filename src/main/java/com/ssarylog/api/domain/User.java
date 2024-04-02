@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "Member")
 public class User {
 
     @Id
@@ -27,10 +26,6 @@ public class User {
     private String password;
 
     private LocalDateTime createdAt;
-
-    @OneToMany
-    private List<Session> sessions = new ArrayList<>();
-
     @Builder
     public User(String name, String email, String password) {
         this.name = name;
@@ -39,13 +34,5 @@ public class User {
         this.createdAt = LocalDateTime.now();
     }
 
-    public Session addSession() {
-        Session session = Session.builder()
-                .user(this)
-                .build();
-        sessions.add(session);
-
-        return session;
-    }
 
 }
