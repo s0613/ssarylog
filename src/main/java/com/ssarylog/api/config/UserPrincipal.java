@@ -16,7 +16,10 @@ public class UserPrincipal extends User {
 
     public UserPrincipal(com.ssarylog.api.domain.User user) {
         super(user.getEmail(), user.getPassword(),
-                List.of(new SimpleGrantedAuthority("ADMIN")));
+                List.of(
+                        new SimpleGrantedAuthority("ROLE_USER")
+//                        new SimpleGrantedAuthority("WRITE")
+                ));
         this.userId = user.getId();
     }
 
