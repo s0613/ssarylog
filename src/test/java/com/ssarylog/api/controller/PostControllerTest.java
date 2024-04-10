@@ -35,17 +35,16 @@ class PostControllerTest {
     @Autowired
     private PostRepository postRepository;
     @Autowired
-    ObjectMapper objectMapper; // 반드시 배워두기 ObjectMapper 백번천번만번 알아두기
+    ObjectMapper objectMapper;
     @Autowired
     PostService postService;
-
     @BeforeEach
     void clean(){ // 각각의 메소들이 실행되기전에 실행된다.
      postRepository.deleteAll();
     }
 
     @Test
-    @DisplayName("/posts 요청시 Hello World를 출력한다.")
+    @DisplayName("글 작성.")
     void test() throws Exception {
         //given
         PostCreate request = PostCreate.builder()

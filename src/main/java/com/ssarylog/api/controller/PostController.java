@@ -8,6 +8,7 @@ import com.ssarylog.api.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostController {
     private final PostService postService; // final이 붙지 않으면 기본 생성자로 주입이 되지 않습니다.
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/posts")
     public void post(@RequestBody @Valid PostCreate request) {
         request.isValid();
@@ -29,7 +30,7 @@ public class PostController {
      * /posts -> 글 전체 조회(검색 + 페이징)
      * /posts -> 글 한 개만 조회
      */
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/posts/{postsId}")
     public PostResponse get(@PathVariable(name = "postsId") Long id) {
 
@@ -41,16 +42,18 @@ public class PostController {
     // 조회 API
     // 여러개의 글을 조회 API
     // /posts
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/posts")
     public List<PostResponse> getList(@ModelAttribute PostSearch postSearch){
         return postService.getList(postSearch);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PatchMapping("/posts/{postId}")
     public void edit(@PathVariable Long postId, @RequestBody @Valid PostEdit request) {
         postService.edit(postId, request);
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/posts/{postId}")
     public void delete(@PathVariable Long postId){
         postService.delete(postId);
