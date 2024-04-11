@@ -51,3 +51,5 @@ version = '0.0.1-SNAPSHOT'
     - 왜 이런걸로 비번 암호화 하면 안되는지 (salt 값이 없다.)
 3. BCrypt SCrypt, Argon2
     - salt 값 (어떻게 넣는냐에 따라 달라짐)
+
+### 댓글 기능

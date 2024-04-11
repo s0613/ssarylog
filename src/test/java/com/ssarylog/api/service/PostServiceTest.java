@@ -1,8 +1,10 @@
 package com.ssarylog.api.service;
 
 import com.ssarylog.api.domain.Post;
+import com.ssarylog.api.domain.User;
 import com.ssarylog.api.exception.PostNotFound;
 import com.ssarylog.api.repository.PostRepository;
+import com.ssarylog.api.repository.UserRepository;
 import com.ssarylog.api.request.PostCreate;
 import com.ssarylog.api.request.PostEdit;
 import com.ssarylog.api.request.PostSearch;
@@ -33,20 +35,29 @@ class PostServiceTest {
     @Autowired
     private PostRepository postRepository;
 
+    @Autowired
+    private UserRepository userRepository;
     @BeforeEach
     void clean(){
         postRepository.deleteAll();
+        userRepository.deleteAll();
     }
 
     @Test
     @DisplayName("글 작성")
     void test1() {
         //given
+        var user = User.builder()
+                .name("ssj")
+                .email("ssary00@naver.com")
+                .password("123")
+                .build();
+
         PostCreate postCreate = PostCreate.builder()
                 .title("제목입니다.")
                 .content("내용입니다.")
                 .build();
-        postService.write(postCreate);
+        postService.write(user.getId(),postCreate);
         Assertions.assertEquals(1L, postRepository.count());
         Post post = postRepository.findAll().get(0);
         Assertions.assertEquals("제목입니다.", post.getTitle());

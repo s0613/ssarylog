@@ -3,7 +3,9 @@ package com.ssarylog.api.service;
 import com.ssarylog.api.domain.Post;
 import com.ssarylog.api.domain.PostEditor;
 import com.ssarylog.api.exception.PostNotFound;
+import com.ssarylog.api.exception.UserNotFound;
 import com.ssarylog.api.repository.PostRepository;
+import com.ssarylog.api.repository.UserRepository;
 import com.ssarylog.api.request.PostCreate;
 import com.ssarylog.api.request.PostEdit;
 import com.ssarylog.api.request.PostSearch;
@@ -21,11 +23,17 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository; // 기본 생성자로 인젝션함 @AutoWired를 안 쓴다는 거임
-
-    public void write(PostCreate postCreate){
+    private final UserRepository userRepository;
+    public void write(Long userId, PostCreate postCreate){
         // postCreate -> Entity로 바꾸어 주어야함 현재 request DTO형태임
+        var user = userRepository.findById(userId)
+                .orElseThrow(UserNotFound::new);
 
-        Post post = new Post(postCreate.getTitle(), postCreate.getContent());
+        Post post = Post.builder()
+                        .title(postCreate.getTitle())
+                                .content(postCreate.getContent())
+                                        .user(user)
+                                                .build();
         postRepository.save(post);
     }
     public PostResponse get(Long id){
