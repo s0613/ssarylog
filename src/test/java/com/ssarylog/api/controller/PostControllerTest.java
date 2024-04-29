@@ -2,9 +2,9 @@ package com.ssarylog.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssarylog.api.domain.Post;
-import com.ssarylog.api.repository.PostRepository;
-import com.ssarylog.api.request.PostCreate;
-import com.ssarylog.api.request.PostEdit;
+import com.ssarylog.api.repository.post.PostRepository;
+import com.ssarylog.api.request.post.PostCreate;
+import com.ssarylog.api.request.post.PostEdit;
 import com.ssarylog.api.service.PostService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

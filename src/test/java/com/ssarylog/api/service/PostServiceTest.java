@@ -3,11 +3,11 @@ package com.ssarylog.api.service;
 import com.ssarylog.api.domain.Post;
 import com.ssarylog.api.domain.User;
 import com.ssarylog.api.exception.PostNotFound;
-import com.ssarylog.api.repository.PostRepository;
+import com.ssarylog.api.repository.post.PostRepository;
 import com.ssarylog.api.repository.UserRepository;
-import com.ssarylog.api.request.PostCreate;
-import com.ssarylog.api.request.PostEdit;
-import com.ssarylog.api.request.PostSearch;
+import com.ssarylog.api.request.post.PostCreate;
+import com.ssarylog.api.request.post.PostEdit;
+import com.ssarylog.api.request.post.PostSearch;
 import com.ssarylog.api.response.PostResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,16 +15,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @SpringBootTest
 class PostServiceTest {

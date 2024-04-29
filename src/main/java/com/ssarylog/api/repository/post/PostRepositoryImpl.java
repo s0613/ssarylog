@@ -1,9 +1,9 @@
-package com.ssarylog.api.repository;
+package com.ssarylog.api.repository.post;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssarylog.api.domain.Post;
 import com.ssarylog.api.domain.QPost;
-import com.ssarylog.api.request.PostSearch;
+import com.ssarylog.api.request.post.PostSearch;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

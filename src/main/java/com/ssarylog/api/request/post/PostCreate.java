@@ -1,4 +1,4 @@
-package com.ssarylog.api.request;
+package com.ssarylog.api.request.post;
 
 import com.ssarylog.api.exception.InvalidRequest;
 import jakarta.validation.constraints.NotBlank;

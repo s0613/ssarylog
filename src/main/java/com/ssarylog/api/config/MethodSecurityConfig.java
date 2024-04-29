@@ -1,6 +1,6 @@
 package com.ssarylog.api.config;
 
-import com.ssarylog.api.repository.PostRepository;
+import com.ssarylog.api.repository.post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

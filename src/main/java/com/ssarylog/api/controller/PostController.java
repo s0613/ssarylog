@@ -1,9 +1,9 @@
 package com.ssarylog.api.controller;
 
 import com.ssarylog.api.config.UserPrincipal;
-import com.ssarylog.api.request.PostCreate;
-import com.ssarylog.api.request.PostEdit;
-import com.ssarylog.api.request.PostSearch;
+import com.ssarylog.api.request.post.PostCreate;
+import com.ssarylog.api.request.post.PostEdit;
+import com.ssarylog.api.request.post.PostSearch;
 import com.ssarylog.api.response.PostResponse;
 import com.ssarylog.api.service.PostService;
 import jakarta.validation.Valid;

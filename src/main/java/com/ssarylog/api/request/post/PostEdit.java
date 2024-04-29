@@ -1,4 +1,4 @@
-package com.ssarylog.api.request;
+package com.ssarylog.api.request.post;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;

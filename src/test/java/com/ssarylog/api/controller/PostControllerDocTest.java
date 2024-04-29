@@ -2,8 +2,8 @@ package com.ssarylog.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssarylog.api.domain.Post;
-import com.ssarylog.api.repository.PostRepository;
-import com.ssarylog.api.request.PostCreate;
+import com.ssarylog.api.repository.post.PostRepository;
+import com.ssarylog.api.request.post.PostCreate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +24,6 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
-import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

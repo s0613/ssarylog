@@ -1,7 +1,7 @@
 package com.ssarylog.api.config;
 
 import com.ssarylog.api.exception.PostNotFound;
-import com.ssarylog.api.repository.PostRepository;
+import com.ssarylog.api.repository.post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.PermissionEvaluator;
